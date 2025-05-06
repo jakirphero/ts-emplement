@@ -20,49 +20,30 @@
 
     // inheritance ------ parat to child call
 
-    // class company 
-    type Department = {
-        name: string
-    }
-
-    type Employee = {
-        name: string
-        age: number
-    }
-
-    class TeslaCompany {
-        private static role = "Admin"
-        private readonly credentials: string = ''
-        private departments: (Department)[] = []
-        private employees: (Employee)[] = []
-
-        constructor(cred: string) {
-            this.credentials = cred
-        }
-
-        addDepartment(value: Department) {
-            this.departments = [...this.departments, value]
-        }
-
-        addEmployee(value: Employee) {
-            this.employees = [...this.employees, value]
+    // polymorphism 
+    class Product {
+        getDiscount() {
+            return "5% discount"
         }
     }
 
-    class TeslaEmployee extends TeslaCompany {
-        private new_employee: Employee = { name: '', age: 0 }
-
-        public setName(name: Employee): void {
-            this.new_employee = name
-
+    class ClothingProduct extends Product {
+        getDiscount(): string {
+            return "15% discount on clothes!"
+        }
+    }
+    class ElectronicsProduct extends Product {
+        getDiscount(): string {
+            return '10% discount on clothes!'
         }
     }
 
-    const newTeslaEmployee = new TeslaEmployee('123456')
-    newTeslaEmployee.setName({ name: 'Kevin Odongo', age: 36 })
-    newTeslaEmployee.addDepartment({ name: 'Finance' })
-    newTeslaEmployee.addEmployee({ name: 'Kevin Odongo', age: 36 })
-    console.log(newTeslaEmployee)
+    const showDiscount = (item: Product) => {
+        console.log(item.getDiscount())
+    }
 
-
+    const getProduct = new Product();
+    const getProduct1 = new ElectronicsProduct();
+    showDiscount(getProduct)
+    showDiscount(getProduct1)
 }
