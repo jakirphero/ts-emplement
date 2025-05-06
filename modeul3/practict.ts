@@ -1,49 +1,70 @@
 {
-    // basic class for OOP
-    // class Card {
-    //     id: number;
-    //     title: string;
-    //     details: string
-
-    //     constructor(id: number, title: string, details: string) {
-    //         this.id = id;
-    //         this.title = title;
-    //         this.details = details;
-    //     }
-    //     getPerson(name: string){
-    //         console.log(`name: ${name}`);
+    //public 
+    // class Greeter {
+    //     public greet(){
+    //         console.log('hello')
     //     }
     // }
-    // const res1 = new Card(2, 'baby shop', 'this is good');
-    // res1.getPerson('abdul')
-    // console.log(res1)
 
-    // inheritance ------ parat to child call
-
-    // polymorphism 
-    class Product {
-        getDiscount() {
-            return "5% discount"
+    //protected 
+    class Greeter {
+        public greet() {
+            console.log("hello, " + this.getName())
+        }
+        protected getName(): string {
+            return "hi"
         }
     }
 
-    class ClothingProduct extends Product {
-        getDiscount(): string {
-            return "15% discount on clothes!"
-        }
-    }
-    class ElectronicsProduct extends Product {
-        getDiscount(): string {
-            return '10% discount on clothes!'
+    class SpecialGreeter extends Greeter {
+        public howdy() {
+            console.log("howdy, " + this.getName())
         }
     }
 
-    const showDiscount = (item: Product) => {
-        console.log(item.getDiscount())
+    // const res2 = new SpecialGreeter();
+    // res2.greet();
+
+    class Animal {
+        protected name: string;
+
+        constructor(name: string) {
+            this.name = name;
+        }
+    }
+    class Dog extends Animal {
+        bark() {
+            console.log(`Woof! My name is ${this.name}`)
+        }
+    }
+    // const res = new Greeter();
+    // res.greet()
+    // const res1 = new Dog('jakir')
+    // res1.bark()
+
+    //private
+    class Base {
+        private x: number = 0;
     }
 
-    const getProduct = new Product();
-    const getProduct1 = new ElectronicsProduct();
-    showDiscount(getProduct)
-    showDiscount(getProduct1)
+    class Derived extends Base {
+        ShowX() {
+            //Property 'x' is private and only accessible within class 'Base'.ts(2341)
+            //(property) Base.x: number
+            // console.log(this.x)
+        }
+    }
+
+    const b = new Base()
+    // console.log(b);
+
+    // static 
+    class MyClass {
+       static x = 0;
+       static printX(){
+            console.log(MyClass.x);
+        }
+    }
+    console.log(MyClass.x);
+
 }
