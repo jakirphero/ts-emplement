@@ -62,7 +62,7 @@
     newTeslaEmployee.setName({ name: 'Kevin Odongo', age: 36 })
     newTeslaEmployee.addDepartment({ name: 'Finance' })
     newTeslaEmployee.addEmployee({ name: 'Kevin Odongo', age: 36 })
-    console.log(newTeslaEmployee)
+    console.log(newTeslaEmployee);
 
 
 }
